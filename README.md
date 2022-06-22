@@ -11,7 +11,7 @@ Other requirements are easy to install via pip. If you have problems with hydra:
 
 
 Training:
-1. Create a dataset directory with two folders: training and testing. In each of these folders add folders with class names and fill these class-named folders with .wav examples. Files in training will be used for training; files in testing will be used for validation. 
+1. Create a dataset directory with two folders: training and validating. In each of these folders add folders with class names and fill these class-named folders with .wav examples. Files in training will be used for training; files in validating will be used for validation. 
 
 *Idk why - it just works that way*
 
@@ -23,7 +23,7 @@ par example:
   ---kakdela
   ---horoso
   ---goodbuy
- --testing
+ --validating
   ---privet
   ---kakdela
   ---horoso
@@ -43,8 +43,18 @@ par example:
  Inference:
  1. Open infer_real.py file and write your classes' names in array CLASSES at line 92.
  2. Locate .pth trained file at generated folder checkpoint/[saving model weights path]/weights_file.pth
- 3. Run infer_real.py in cmd and write command in following terms:
+ 3. Create testing folder in dataset directory.
+```
+ --testing
+  ---privet
+  ---kakdela
+  ---horoso
+  ---goodbuy
+```
+ 4. Run infer_real.py in cmd and write command in following terms:
  python infer_real.py [pretrained model path] [test_dataset directory path] [saved_model_weights_file_path]
  
  par example:
- python infer_real.py wav2vec_small.pt dataset_MTUCI_test checkpoint/[saving model weights path]/weights_file.pth
+ python infer_real.py wav2vec_small.pt dataset_MTUCI_test checkpoint/saved_model/latest_model.pth
+
+5. Check saved results in saved numpy arrays: pred_test_MTUCI.npy (predicted values), y_test_MTUCI.npy (real values)
