@@ -1,4 +1,5 @@
 # MTUCI_Praktika_2022
+Ураааааа, Я поступил в МТУСИ!!!!
 Keyword in audio recognition via Wav2KWS SOTA model
 
 
