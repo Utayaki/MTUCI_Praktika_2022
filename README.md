@@ -10,7 +10,8 @@ Other requirements are easy to install via pip. If you have problems with hydra:
 
 
 Training:
-1. Create a dataset directory with two folders: training and testing. In each of these folders add folders with class names and fill these class-named folders with .wav examples
+1. Create a dataset directory with two folders: training and testing. In each of these folders add folders with class names and fill these class-named folders with .wav examples. Files in training will be used
+
 par example:
 ```
 -dataset_MTUCI
@@ -25,8 +26,11 @@ par example:
   ---horoso
   ---goodbuy
 ```
- 2. Open downstream_kws file and write your classes' names in array CLASSES at line 92.
- 3. Open downstream_kws in cmd and write command in following terms:
+ 2. Open downstream_kws.py file and write your classes' names in array CLASSES at line 92 as they are written in directory. "unknown" and "silence" classes should be put in the beginning respectively.
+ 
+ par example: CLASSES = 'unknown, silence, privet, kakdela, horosho, goodbuy'.split(', ')
+ 
+ 3. Open downstream_kws.py in cmd and write command in following terms:
  python downstream_kws.py [pretrained model path] [dataset directory path] [saving model weights path]
  
  par example:
@@ -34,4 +38,6 @@ par example:
  
  
  Inference:
- 
+ 1. Open infer_real.py file and write your classes' names in array CLASSES at line 92.
+ 2. Locate .pth trained file at generated folder checkpoint/[saving model weights path]/weights_file.pth
+ 3. 
