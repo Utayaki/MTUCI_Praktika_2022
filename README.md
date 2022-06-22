@@ -12,17 +12,19 @@ Other requirements are easy to install via pip. If you have problems with hydra:
 Training:
 1. Create a dataset directory with two folders: training and testing. In each of these folders add folders with class names and fill these class-named folders with .wav examples
 par example:
--training
- -hello
- -buy
- -good
- -arkadiy
--testing
- -hello
- -buy
- -good
- -arkadiy
- 
+```
+-dataset_MTUCI
+ --training
+  ---privet
+  ---kakdela
+  ---horoso
+  ---goodbuy
+ --testing
+  ---privet
+  ---kakdela
+  ---horoso
+  ---goodbuy
+```
  2. Open downstream_kws file and write your classes' names in array CLASSES at line 92.
  3. Open downstream_kws in cmd and write command in following terms:
  python downstream_kws.py [pretrained model path] [dataset directory path] [saving model weights path]
