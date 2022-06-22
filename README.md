@@ -1,5 +1,6 @@
 # MTUCI_Praktika_2022
-Ураааааа, Я поступил в МТУСИ!!!!
+> Ураааааа, Я поступил в МТУСИ!!!!
+
 Keyword in audio recognition via Wav2KWS SOTA model
 
 
@@ -13,8 +14,6 @@ Other requirements are easy to install via pip. If you have problems with hydra:
 
 Training:
 1. Create a dataset directory with two folders: training and validating. In each of these folders add folders with class names and fill these class-named folders with .wav examples. Files in training will be used for training; files in validating will be used for validation. 
-
-*Idk why - it just works that way*
 
 par example:
 ```
