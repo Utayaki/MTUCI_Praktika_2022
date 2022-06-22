@@ -283,7 +283,7 @@ def _collate_fn(samples):
 batch_size = 16
 
 train_dataset = SpeechCommandsDataset(root=args.dataset, mode='training', tf_audio_processor=tf_ap)
-test_dataset = SpeechCommandsDataset(root=args.dataset, mode='testing', tf_audio_processor=tf_ap)
+test_dataset = SpeechCommandsDataset(root=args.dataset, mode='validating', tf_audio_processor=tf_ap)
 
 
 train_dataloader = data.DataLoader(train_dataset, batch_size=batch_size, shuffle=True, pin_memory=True,
@@ -349,7 +349,7 @@ if __name__ == '__main__':
             acc = (correct/total_sample)*100
             pbar.set_description("loss: {} acc:{:.2f}".format(total_loss/cur_step, acc))
         
-        logging.info("[test]test start")
+        logging.info("[validating]validating start")
         with torch.no_grad():
             pbar = tqdm(test_dataloader)
             total_loss = 0
@@ -375,7 +375,7 @@ if __name__ == '__main__':
                 cur_step += 1
                 correct += pred.eq(y.data.view_as(pred)).sum().item()
                 acc = (correct/total_sample)*100
-                pbar.set_description("[test]epoch {} loss: {} acc:{:.2f}".format(epoch,total_loss/cur_step, acc))
+                pbar.set_description("[validation]epoch {} loss: {} acc:{:.2f}".format(epoch,total_loss/cur_step, acc))
             if acc>best_acc:
                 best_acc = acc
                 save('best_model.pth', model, epoch, optimizer, loss, acc)
